@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promoção — Viagem ao Litoral</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+    <header>
+      <h1>🌊 Viagem ao Litoral</h1>
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="menu" id="menu">
+        <a href="../index.html">Home</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../contato.html">Contato</a>
+        <a href="index.html">Promoção</a>
+      </nav>
+    </header>
+    <main>
+      <section class="desconto">
+        <div class="tag">⚡ Oferta por tempo limitado</div>
+        <h2>20% OFF na sua viagem</h2>
+        <p>
+          Inscreva-se até o fim do mês e garanta o desconto na viagem dos seus
+          sonhos ao litoral.
+        </p>
+        <a href="../contato.html" class="botao_promo"
+          >Garantir desconto agora</a
+        >
+      </section>
+      <section class="desconto-detalhes">
+        <h3>O que está incluído</h3>
+        <ul>
+          <li>Transporte de ida e volta em ônibus</li>
+          <li>15 a 20 dias de viagem</li>
+          <li>Organização completa do roteiro</li>
+          <li>Suporte durante toda a viagem</li>
+        </ul>
+
+        <h3>Como aproveitar a promoção</h3>
+        <ul>
+          <li>Preencha o formulário de contato</li>
+          <li>Mencione o código LITORAL20</li>
+          <li>Aguarde nosso contato para confirmar</li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>© 2026 Viagem ao Litoral — Todos os direitos reservados</p>
+    </footer>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const menu = document.getElementById("menu");
+      const overlay = document.getElementById("overlay");
+
+      function abrirMenu() {
+        hamburger.classList.add("aberto");
+        menu.classList.add("aberto");
+        overlay.classList.add("aberto");
+        hamburger.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
+
+      function fecharMenu() {
+        hamburger.classList.remove("aberto");
+        menu.classList.remove("aberto");
+        overlay.classList.remove("aberto");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+
+      hamburger.addEventListener("click", function () {
+        if (menu.classList.contains("aberto")) {
+          fecharMenu();
+        } else {
+          abrirMenu();
+        }
+      });
+
+      overlay.addEventListener("click", fecharMenu);
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") fecharMenu();
+      });
+    </script>
+  </body>
+</html>

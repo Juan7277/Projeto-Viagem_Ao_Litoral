@@ -1,0 +1,658 @@
+/* ============================================================
+   RESET GLOBAL
+   Aplicado em todas as páginas
+   ============================================================ */
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+}
+
+
+/* ============================================================
+   HEADER — Cabeçalho fixo no topo
+   Aplicado em: index.html | sobre.html | contato.html | promo/index.html
+   ============================================================ */
+header {
+    display: flex;
+    background-color: #0A4F7A;
+    padding: 20px 30px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 160;
+}
+
+header h1 {
+    color: white;
+    font-size: clamp(18px, 4vw, 28px);
+}
+
+
+/* ============================================================
+   NAVEGAÇÃO — Menu de links no header
+   Aplicado em: index.html | sobre.html | contato.html | promo/index.html
+   ============================================================ */
+.menu {
+    display: flex;
+    gap: 40px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #82C6D8;
+    font-weight: bold;
+    background-color: #1c6491;
+    padding: 12px 24px;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.menu a:active {
+    transform: translateY(0px) scale(0.95);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+
+/* ============================================================
+   HAMBURGER — Botão de menu mobile
+   Aplicado em: index.html | sobre.html | contato.html | promo/index.html
+   (visível apenas em telas <= 768px via @media)
+   ============================================================ */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    gap: 6px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    z-index: 200;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: transform 0.35s ease, opacity 0.25s ease, width 0.3s ease;
+    transform-origin: center;
+}
+
+/* Animação das 3 barras ao abrir o menu */
+.hamburger.aberto span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.aberto span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+
+.hamburger.aberto span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* ============================================================
+   SEÇÃO: .introducao — Banner principal com CTA
+   Aplicado em: index.html
+   ============================================================ */
+.introducao {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+    background: linear-gradient(to right, #0A4F7A, #198D76);
+    height: 400px;
+    padding: 40px 20px;
+}
+
+.introducao h2 {
+    font-size: clamp(24px, 5vw, 42px);
+    color: white;
+}
+
+.introducao p {
+    color: #B4D0D1;
+    font-size: clamp(14px, 2.5vw, 16px);
+    padding: 0 10px;
+}
+
+/* Botão "Quero me inscrever" da home */
+.botao_home {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 35px;
+    background-color: #ffffff;
+    color: #11547D;
+    font-weight: bold;
+    padding: 18px 32px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.botao_home:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.botao_home:active {
+    transform: scale(0.95);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ============================================================
+   SEÇÃO: .viagens — Lista de próximas viagens
+   Aplicado em: index.html
+   ============================================================ */
+.viagens {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 30px;
+}
+
+.viagens h2 {
+    font-size: clamp(22px, 4vw, 32px);
+    color: #0A4F7A;
+}
+
+.viagens > p {
+    margin-top: 8px;
+    color: #555;
+}
+
+/* Grid de cartões de viagem */
+.cartoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+    gap: 30px;
+}
+
+.cartao {
+    height: 180px;
+    width: 230px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3),
+        0 -5px 0 #1D9E75;
+    flex-shrink: 0;
+}
+
+.cartao .destino {
+    color: #314F7A;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 17px 0px 0px 17px;
+    text-align: left;
+}
+
+.cartao .duracao {
+    font-size: 12px;
+    color: #888888;
+    text-align: left;
+    padding: 17px 0px 0px 17px;
+}
+
+.cartao .preco {
+    color: #1D9E75;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 17px 0px 0px 17px;
+    text-align: left;
+}
+
+
+/* ============================================================
+   SEÇÃO: .galeria — Foto da praia
+   Aplicado em: index.html
+   ============================================================ */
+.galeria {
+    padding: 0 30px 60px;
+    text-align: center;
+}
+
+.galeria img {
+    width: 100%;
+    max-width: 900px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+
+/* ============================================================
+   FOOTER — Rodapé com copyright
+   Aplicado em: index.html | sobre.html | contato.html | promo/index.html
+   ============================================================ */
+footer {
+    background-color: #063550;
+    color: #90d4f7;
+    text-align: center;
+    padding: 28px;
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   SEÇÃO: .sobre — Texto institucional da empresa
+   Aplicado em: sobre.html
+   ============================================================ */
+.sobre {
+    line-height: 2.0;
+    margin: 0 auto;
+    padding: 50px 30px;
+    max-width: 750px;
+    min-height: auto;
+}
+
+.sobre h2 {
+    color: #0A4F7A;
+    text-align: left;
+    font-size: clamp(22px, 4vw, 32px);
+}
+
+.sobre p {
+    color: #444444;
+}
+
+/* Botão "Quero me inscrever" da página Sobre */
+.botao_sobre {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 40px;
+    background-color: #11547D;
+    color: #F0F0F0;
+    font-weight: bold;
+    padding: 18px 32px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.botao_sobre:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.botao_sobre:active {
+    transform: scale(0.95);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ============================================================
+   SEÇÃO: .cadastro — Formulário de inscrição
+   Aplicado em: contato.html
+   ============================================================ */
+.cadastro {
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 50px 30px;
+
+    /* Centralização vertical do conteúdo da seção */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cadastro h2 {
+    color: #0A4F7A;
+    font-size: clamp(22px, 4vw, 32px);
+}
+
+.cadastro p {
+    color: #555555;
+    /* Espaçamento entre o h2 e o parágrafo */
+    margin-top: 16px;
+}
+
+
+/* ============================================================
+   FORMULÁRIO — Estilo compartilhado dos dois forms
+   Aplicado em: contato.html (.cadastro e .sugestoes)
+   ============================================================ */
+.formulario {
+    background-color: #FFFFFF;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+.formulario input {
+    padding: 12px 16px;
+    border: 1.5px solid #d0e8f5;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.formulario button {
+    border: none;
+    width: 100%;
+    color: white;
+    background-color: #0A4F7A;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.formulario button:hover {
+    background-color: #198D76;
+}
+
+.formulario button:active {
+    transform: scale(0.95);
+    background-color: #137a63;
+}
+
+
+/* ============================================================
+   SEÇÃO: .sugestoes — Formulário de sugestões e reclamações
+   Aplicado em: contato.html
+   ============================================================ */
+.sugestoes {
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 0 30px 60px;
+
+    /* Centralização vertical do conteúdo da seção */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sugestoes h2 {
+    color: #0A4F7A;
+    font-size: clamp(22px, 4vw, 32px);
+}
+
+.sugestoes p {
+    color: #555555;
+    /* Espaçamento entre o h2 e o parágrafo */
+    margin-top: 16px;
+}
+
+.sugestoes textarea {
+    padding: 12px 16px;
+    border: 1.5px solid #d0e8f5;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+}
+
+
+/* ============================================================
+   SEÇÃO: .desconto — Banner principal da promoção
+   Aplicado em: promo/index.html
+   ============================================================ */
+.desconto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    background: linear-gradient(to right, #258164, #0A507A);
+    width: 100%;
+    min-height: 500px;
+    padding: 50px 20px;
+    text-align: center;
+    gap: 20px;
+}
+
+/* Tag de oferta limitada */
+.tag {
+    display: inline;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+.desconto h2 {
+    color: white;
+    font-size: clamp(28px, 6vw, 52px);
+}
+
+.desconto p {
+    color: #E7F0F1;
+    font-size: clamp(14px, 2.5vw, 16px);
+}
+
+/* Botão "Garantir desconto agora" da promo */
+.botao_promo {
+    text-decoration: none;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    color: #0A4F7A;
+    font-weight: bold;
+    padding: 18px 32px;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.botao_promo:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.botao_promo:active {
+    transform: scale(0.95);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ============================================================
+   SEÇÃO: .desconto-detalhes — Lista de itens incluídos na promoção
+   Aplicado em: promo/index.html
+   ============================================================ */
+.desconto-detalhes {
+    padding: 50px 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.desconto-detalhes h3 {
+    font-size: 20px;
+    color: #0a4f7a;
+    margin-bottom: 15px;
+}
+
+.desconto-detalhes ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.desconto-detalhes ul li::before {
+    content: "✓ ";
+    font-size: 20px;
+    color: #1d9e75;
+}
+
+
+/* ============================================================
+   MEDIA QUERY — Telas até 768px (mobile)
+   Ajustes para: index.html | sobre.html | contato.html | promo/index.html
+   ============================================================ */
+@media (max-width: 768px) {
+
+    /* Exibe o botão hamburger e oculta o menu horizontal */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Menu lateral deslizante (drawer) */
+    .menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: #0A4F7A;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 90px 30px 40px;
+        gap: 16px;
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 150;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu.aberto {
+        transform: translateX(0);
+    }
+
+    .menu a {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px 20px;
+    }
+
+    /* Overlay escuro ao abrir o menu mobile */
+    .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 140;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .overlay.aberto {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* index.html — .introducao */
+    .introducao {
+        height: auto;
+        min-height: 350px;
+        padding: 50px 20px;
+    }
+
+    /* index.html — .viagens */
+    .viagens {
+        padding: 40px 16px;
+    }
+
+    /* index.html — .cartoes */
+    .cartoes {
+        flex-direction: column;
+        padding: 20px 16px;
+        align-items: center;
+    }
+
+    .cartao {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    /* index.html — .galeria */
+    .galeria {
+        padding: 0 16px 40px;
+    }
+
+    .galeria img {
+        height: 220px;
+    }
+
+    /* sobre.html — .sobre */
+    .sobre {
+        padding: 40px 20px;
+    }
+
+    /* contato.html — .cadastro */
+    .cadastro {
+        padding: 40px 20px;
+    }
+
+    /* contato.html — .formulario */
+    .formulario {
+        max-width: 100%;
+    }
+
+    /* contato.html — .sugestoes */
+    .sugestoes {
+        padding: 0 20px 50px;
+    }
+
+    /* promo/index.html — .desconto */
+    .desconto {
+        min-height: 420px;
+        padding: 50px 20px;
+    }
+
+    /* promo/index.html — .desconto-detalhes */
+    .desconto-detalhes {
+        padding: 40px 20px;
+    }
+}
+
+
+/* ============================================================
+   MEDIA QUERY — Telas até 400px (telas muito pequenas)
+   Ajustes para: index.html | sobre.html | contato.html | promo/index.html
+   ============================================================ */
+@media (max-width: 400px) {
+    header {
+        padding: 16px 20px;
+    }
+
+    header h1 {
+        font-size: 16px;
+    }
+}

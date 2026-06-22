@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato — Viagem ao Litoral</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      function mascaraTelefone(campo) {
+        let valor = campo.value.replace(/\D/g, "");
+        valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2");
+        valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
+        campo.value = valor;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+    <header>
+      <h1>🌊 Viagem ao Litoral</h1>
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="menu" id="menu">
+        <a href="index.html">Home</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="promo/index.html">Promoção</a>
+      </nav>
+    </header>
+    <main>
+      <section class="cadastro">
+        <h2>Quero participar</h2>
+        <p>
+          Preencha seus dados e entraremos em contato com mais informações
+          <br />
+          sobre a viagem.
+        </p>
+        <br />
+        <form action="" method="post" class="formulario">
+          <label for="nome">Nome completo</label>
+          <br /><br />
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            placeholder="Seu nome"
+            required
+          />
+          <br /><br />
+          <label for="email">E-mail</label>
+          <br /><br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="seu@email.com"
+            required
+          />
+          <br /><br />
+          <label for="telefone">Telefone / Whatsapp</label>
+          <br /><br />
+          <input
+            type="tel"
+            name="telefone"
+            id="telefone"
+            placeholder="(00) 00000-0000"
+            oninput="mascaraTelefone(this)"
+            maxlength="15"
+            required
+          />
+          <br /><br />
+          <label for="codigo">Código</label>
+          <br /><br />
+          <input
+            type="text"
+            name="codigo"
+            id="codigo"
+            placeholder="Código promocional"
+            required
+          />
+          <br /><br />
+          <button type="submit">Enviar cadastro</button>
+        </form>
+      </section>
+      <section class="sugestoes">
+        <h2>Sugestões e Reclamações</h2>
+        <p>
+          Sua opinião é muito importante para nós. Use o espaço abaixo para
+          <br />
+          enviar sugestões ou relatar algum problema.
+        </p>
+        <br />
+        <form action="" method="post" class="formulario">
+          <label for="nome2">Nome</label>
+          <br /><br />
+          <input
+            type="text"
+            name="nome2"
+            id="nome2"
+            placeholder="Seu nome"
+            required
+          />
+          <br /><br />
+          <label for="email2">E-mail para resposta</label>
+          <br /><br />
+          <input
+            type="email"
+            name="email2"
+            id="email2"
+            placeholder="seu@email.com"
+            required
+          />
+          <br /><br />
+          <label for="mensagem">Mensagem</label>
+          <br /><br />
+          <textarea
+            name="mensagem"
+            id="mensagem"
+            placeholder="Escreva sua sugestão ou reclamação..."
+            required
+          ></textarea>
+          <br /><br />
+          <button type="submit">Enviar mensagem</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>© 2026 Viagem ao Litoral — Todos os direitos reservados</p>
+    </footer>
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const menu = document.getElementById("menu");
+      const overlay = document.getElementById("overlay");
+
+      function abrirMenu() {
+        hamburger.classList.add("aberto");
+        menu.classList.add("aberto");
+        overlay.classList.add("aberto");
+        hamburger.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+      }
+
+      function fecharMenu() {
+        hamburger.classList.remove("aberto");
+        menu.classList.remove("aberto");
+        overlay.classList.remove("aberto");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+
+      hamburger.addEventListener("click", function () {
+        if (menu.classList.contains("aberto")) {
+          fecharMenu();
+        } else {
+          abrirMenu();
+        }
+      });
+
+      overlay.addEventListener("click", fecharMenu);
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") fecharMenu();
+      });
+    </script>
+  </body>
+</html>

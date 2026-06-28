@@ -36,6 +36,12 @@ header h1 {
     font-size: clamp(18px, 4vw, 28px);
 }
 
+/* Header da landing page de promoção — sem nav, sem sticky */
+.header-promo {
+    position: static;
+    justify-content: center;
+}
+
 
 /* ============================================================
    NAVEGAÇÃO — Menu de links no header
